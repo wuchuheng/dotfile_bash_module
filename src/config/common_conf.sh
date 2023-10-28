@@ -4,6 +4,9 @@ DOTFILES_CLI_PATH=src/cli
 
 GLOBAL_OS=''
 
+#define global generic boolean values.
+TRUE=0
+FALSE=1
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   OS=$(cat /etc/os-release | grep NAME= | awk 'NR == 1 {print $0}' |  sed -n 's/NAME="\([^"]*\)".*/\1/p')
