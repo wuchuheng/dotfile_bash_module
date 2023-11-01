@@ -13,9 +13,9 @@ function load_env() {
     log INFO "Loading environment variables from $env_file"
     source $env_file
 
-    # if t variable is exist
+    # if t variable is existed
     if [ -n "$RUNTIME_DIR" ]; then
-      l_project_base_path=$(dirname "${env_file}")
+      local l_project_base_path=$(dirname "${env_file}")
       RUNTIME_DIR=${l_project_base_path}/${RUNTIME_DIR}
     fi
 
@@ -44,3 +44,4 @@ function get_env() {
     return "${TRUE}"
   fi
 }
+

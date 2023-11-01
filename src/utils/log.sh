@@ -28,7 +28,12 @@ log() {
   local message="$2"
   local script="${BASH_SOURCE[1]}"
   local line="${BASH_LINENO[0]}"
-  local timestamp=$(date +"%Y-%m-%d %T")
+  local timestamp=$(date +"%T")
+  # if the APP_BASE_PATH declare, then replace the APP_BASE_PATH to empty string.
+  if [ -n "$APP_BASE_PATH" ]; then
+    script=${script/$APP_BASE_PATH\//}
+  fi
+
 
   case "$level" in
     "INFO")
