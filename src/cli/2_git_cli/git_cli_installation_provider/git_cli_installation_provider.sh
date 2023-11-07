@@ -20,7 +20,7 @@ if ! is_command 'git'; then
          install_git_success_log
        fi
     ;;
-    'CentOS Linux')
+    'CentOS')
        yum update -y;
        yum install -y git
        if $? == 0; then

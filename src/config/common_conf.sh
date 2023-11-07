@@ -14,11 +14,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     'Ubuntu')
         GLOBAL_OS='Ubuntu';
     ;;
-    'PRETTY_Ubuntu 22.04.2 LTS')
+    PRETTY_Ubuntu*)
         GLOBAL_OS='Ubuntu';
     ;;
     'CentOS Linux')
-        GLOBAL_OS='CentOS Linux';
+        GLOBAL_OS='CentOS';
     ;;
     *)
       throw "Unknown OS: $OS"

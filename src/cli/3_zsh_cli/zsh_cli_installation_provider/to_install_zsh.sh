@@ -11,7 +11,7 @@ function to_install_zsh() {
       'PRETTY_Ubuntu')
          sudo apt install -y zsh
       ;;
-      'CentOS Linux')
+      'CentOS')
          yum update -y;
          yum install -y zsh
       ;;
