@@ -12,16 +12,16 @@ order_number=$(get_max_number_by_path "${DOTFILES_BASE_PATH}/src/cli")
 ((order_number++))
 SUB_TARGET_PATH="${DOTFILES_BASE_PATH}/src/cli"
 CLI_PATH=${SUB_TARGET_PATH}/${order_number}_${TOOL_NAME}_cli
-INSTALLATION_PROVIDER_PATH=${CLI_PATH}/${TOOL_NAME}_cli_installation_provider
-UNINSTALLATION_PROVIDER_PATH=${CLI_PATH}/${TOOL_NAME}_cli_uninstallation_provider
+installer_PATH=${CLI_PATH}/${TOOL_NAME}_cli_installer
+UNinstaller_PATH=${CLI_PATH}/${TOOL_NAME}_cli_uninstaller
 
 # Create directory structure
-mkdir -p "${INSTALLATION_PROVIDER_PATH}"
-mkdir -p "${UNINSTALLATION_PROVIDER_PATH}"
+mkdir -p "${installer_PATH}"
+mkdir -p "${UNinstaller_PATH}"
 
-# Generate File 1: cli_installation_provider.sh
-INSTALLATION_PROVIDER="${INSTALLATION_PROVIDER_PATH}/${TOOL_NAME}_cli_installation_provider.sh"
-cat > "$INSTALLATION_PROVIDER" << EOF
+# Generate File 1: cli_installer.sh
+installer="${installer_PATH}/${TOOL_NAME}_cli_installer.sh"
+cat > "$installer" << EOF
 #!/bin/bash
 
 echo "Installing $TOOL_NAME CLI cli tool..."
@@ -33,7 +33,7 @@ function create_log() {
   local file_path=${1:${index}}
   printf "  %s\n" "$(green_print CREATE) ${file_path}"
 }
-create_log "$INSTALLATION_PROVIDER"
+create_log "$installer"
 
 # Generate File 3: main.sh
 main_file="${CLI_PATH}/load_${TOOL_NAME}_cli_to_zsh_env_provider.zsh"
@@ -46,7 +46,7 @@ cat > "$main_file" << EOF
 EOF
 
 # Generate File 4: cli_uninstaller.sh
-uninstaller_file="${UNINSTALLATION_PROVIDER_PATH}/${TOOL_NAME}_cli_uninstaller_provider.sh"
+uninstaller_file="${UNinstaller_PATH}/${TOOL_NAME}_cli_uninstaller_provider.sh"
 cat > "$uninstaller_file" << EOF
 #!/bin/bash
 
